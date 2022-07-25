@@ -13,6 +13,14 @@ public class PagamentoResponse {
         this.status = status;
     }
 
+    @Override
+    public String toString() {
+        return "PagamentoResponse{" +
+                "id='" + id + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
     public String getId() {
         return id;
     }
@@ -20,5 +28,5 @@ public class PagamentoResponse {
     public StatusPagamento getStatus() {
         return status;
     }
-    
+
 }

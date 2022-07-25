@@ -21,6 +21,17 @@ public class UsuarioResponse {
         this.dataNascimento = dataNascimento;
     }
 
+    @Override
+    public String toString() {
+        return "UsuarioResponse{" +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                '}';
+    }
+
     public String getNome() {
         return nome;
     }

@@ -20,6 +20,16 @@ public class ProdutoResponse {
         this.criadoEm = criadoEm;
     }
 
+    @Override
+    public String toString() {
+        return "ProdutoResponse{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", criadoEm=" + criadoEm +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }
