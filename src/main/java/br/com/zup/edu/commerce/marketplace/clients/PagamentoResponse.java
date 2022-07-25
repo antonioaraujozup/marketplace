@@ -1,5 +1,8 @@
 package br.com.zup.edu.commerce.marketplace.clients;
 
+import br.com.zup.edu.commerce.marketplace.compra.FormaPagamento;
+import br.com.zup.edu.commerce.marketplace.compra.Pagamento;
+
 public class PagamentoResponse {
 
     private String id;
@@ -19,6 +22,10 @@ public class PagamentoResponse {
                 "id='" + id + '\'' +
                 ", status=" + status +
                 '}';
+    }
+
+    public Pagamento toPagamento() {
+        return new Pagamento(id, FormaPagamento.CARTAO_DE_CREDITO,status);
     }
 
     public String getId() {

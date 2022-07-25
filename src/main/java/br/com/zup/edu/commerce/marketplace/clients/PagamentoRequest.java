@@ -1,5 +1,8 @@
 package br.com.zup.edu.commerce.marketplace.clients;
 
+import br.com.zup.edu.commerce.marketplace.compra.DadosPagamentoRequest;
+import br.com.zup.edu.commerce.marketplace.compra.Venda;
+
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.YearMonth;
@@ -28,12 +31,12 @@ public class PagamentoRequest {
     public PagamentoRequest() {
     }
 
-    public PagamentoRequest(String titular, String numero, YearMonth validoAte, String codigoSeguranca, BigDecimal valorCompra) {
-        this.titular = titular;
-        this.numero = numero;
-        this.validoAte = validoAte;
-        this.codigoSeguranca = codigoSeguranca;
-        this.valorCompra = valorCompra;
+    public PagamentoRequest(DadosPagamentoRequest pagamento, Venda venda) {
+        this.titular = pagamento.getTitular();
+        this.numero = pagamento.getNumero();
+        this.validoAte = pagamento.getValidoAte();
+        this.codigoSeguranca = pagamento.getCodigoSeguranca();
+        this.valorCompra = venda.calculaValorTotal();
     }
 
     public String getTitular() {
