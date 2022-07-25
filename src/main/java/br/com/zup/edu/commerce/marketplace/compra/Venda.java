@@ -1,11 +1,13 @@
 package br.com.zup.edu.commerce.marketplace.compra;
 
+import br.com.zup.edu.commerce.marketplace.clients.StatusPagamento;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -49,8 +51,8 @@ public class Venda {
         return valorTotal;
     }
 
-    public UUID getCodigoPedido() {
-        return codigoPedido;
+    public StatusPagamento retornaStatusPagamento() {
+        return this.pagamento.getStatus();
     }
 
     public void adicionaItemVenda(ItemVenda item) {
@@ -60,6 +62,26 @@ public class Venda {
 
     public void adicionaDadosPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
+    }
+
+    public UUID getCodigoPedido() {
+        return codigoPedido;
+    }
+
+    public Usuario getComprador() {
+        return comprador;
+    }
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public LocalDateTime getCriadaEm() {
+        return criadaEm;
+    }
+
+    public List<ItemVenda> getItens() {
+        return Collections.unmodifiableList(itens);
     }
 
 }

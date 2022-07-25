@@ -1,6 +1,7 @@
 package br.com.zup.edu.commerce.marketplace.compra;
 
 import br.com.zup.edu.commerce.marketplace.clients.*;
+import br.com.zup.edu.commerce.marketplace.service.KafkaProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,9 @@ public class NovaCompraController {
 
     @Autowired
     private VendaRepository vendaRepository;
+
+    @Autowired
+    private KafkaProducerService kafkaProducerService;
 
     @PostMapping("/compras")
     @Transactional
@@ -62,6 +66,11 @@ public class NovaCompraController {
 
         // Salva a venda (e os itens da venda) no banco de dados.
         vendaRepository.save(venda);
+
+        // Se o pagamento foi aprovado, um evento é inserido no tópico Venda.
+        if(venda.retornaStatusPagamento() == StatusPagamento.APROVADO) {
+            kafkaProducerService.insereEventoNoTopico(new VendaDto(venda));
+        }
 
         // Gera a URI de location.
         URI location = uriComponentsBuilder.path("/compras/{codigoPedido}")

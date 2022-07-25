@@ -34,4 +34,16 @@ public class Pagamento {
         this.status = status;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public FormaPagamento getForma() {
+        return forma;
+    }
+
+    public StatusPagamento getStatus() {
+        return status;
+    }
+
 }

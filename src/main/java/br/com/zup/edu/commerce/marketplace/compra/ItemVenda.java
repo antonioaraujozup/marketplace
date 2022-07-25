@@ -36,6 +36,14 @@ public class ItemVenda {
         this.valor = valor;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -47,4 +55,5 @@ public class ItemVenda {
     public void setVenda(Venda venda) {
         this.venda = venda;
     }
+
 }
