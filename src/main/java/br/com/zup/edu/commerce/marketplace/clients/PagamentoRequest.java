@@ -26,17 +26,17 @@ public class PagamentoRequest {
 
     @NotNull
     @Positive
-    private BigDecimal valorCompra;
+    private BigDecimal valorVenda;
 
     public PagamentoRequest() {
     }
 
-    public PagamentoRequest(DadosPagamentoRequest pagamento, Venda venda) {
+    public PagamentoRequest(DadosPagamentoRequest pagamento, BigDecimal valorTotalVenda) {
         this.titular = pagamento.getTitular();
         this.numero = pagamento.getNumero();
         this.validoAte = pagamento.getValidoAte();
         this.codigoSeguranca = pagamento.getCodigoSeguranca();
-        this.valorCompra = venda.calculaValorTotal();
+        this.valorVenda = valorTotalVenda;
     }
 
     public String getTitular() {
@@ -55,8 +55,8 @@ public class PagamentoRequest {
         return codigoSeguranca;
     }
 
-    public BigDecimal getValorCompra() {
-        return valorCompra;
+    public BigDecimal getValorVenda() {
+        return valorVenda;
     }
 
 }
