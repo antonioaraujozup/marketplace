@@ -37,7 +37,7 @@ public class NovaCompraController {
     @Autowired
     private KafkaProducerService kafkaProducerService;
 
-    @PostMapping("/compras")
+    @PostMapping("/vendas")
     @Transactional
     public ResponseEntity<?> comprar(@RequestBody @Valid NovaCompraRequest request,
                                      UriComponentsBuilder uriComponentsBuilder) {
@@ -79,7 +79,7 @@ public class NovaCompraController {
         }
 
         // Gera a URI de location.
-        URI location = uriComponentsBuilder.path("/compras/{codigoPedido}")
+        URI location = uriComponentsBuilder.path("/vendas/{codigoPedido}")
                 .buildAndExpand(venda.getCodigoPedido())
                 .toUri();
 
