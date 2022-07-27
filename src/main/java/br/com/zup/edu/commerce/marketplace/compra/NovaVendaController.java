@@ -18,9 +18,9 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-public class NovaCompraController {
+public class NovaVendaController {
 
-    Logger logger = LoggerFactory.getLogger(NovaCompraController.class);
+    Logger logger = LoggerFactory.getLogger(NovaVendaController.class);
 
     @Autowired
     private GerenciamentoUsuariosClient gerenciamentoUsuariosClient;
@@ -39,7 +39,7 @@ public class NovaCompraController {
 
     @PostMapping("/vendas")
     @Transactional
-    public ResponseEntity<?> comprar(@RequestBody @Valid NovaCompraRequest request,
+    public ResponseEntity<?> comprar(@RequestBody @Valid NovaVendaRequest request,
                                      UriComponentsBuilder uriComponentsBuilder) {
 
         // Acessa o microsserviço de Gerenciamento de Usuários para buscar os dados do usuário.

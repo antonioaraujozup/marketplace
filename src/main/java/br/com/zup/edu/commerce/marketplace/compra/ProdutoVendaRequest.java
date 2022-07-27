@@ -3,7 +3,7 @@ package br.com.zup.edu.commerce.marketplace.compra;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
-public class ProdutoCompraRequest {
+public class ProdutoVendaRequest {
 
     @NotNull
     private Long id;
@@ -12,10 +12,10 @@ public class ProdutoCompraRequest {
     @Positive
     private Integer quantidade;
 
-    public ProdutoCompraRequest() {
+    public ProdutoVendaRequest() {
     }
 
-    public ProdutoCompraRequest(Long id, Integer quantidade) {
+    public ProdutoVendaRequest(Long id, Integer quantidade) {
         this.id = id;
         this.quantidade = quantidade;
     }
