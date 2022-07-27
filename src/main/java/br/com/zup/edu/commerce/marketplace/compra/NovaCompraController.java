@@ -2,6 +2,8 @@ package br.com.zup.edu.commerce.marketplace.compra;
 
 import br.com.zup.edu.commerce.marketplace.clients.*;
 import br.com.zup.edu.commerce.marketplace.service.KafkaProducerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ import java.net.URI;
 
 @RestController
 public class NovaCompraController {
+
+    Logger logger = LoggerFactory.getLogger(NovaCompraController.class);
 
     @Autowired
     private GerenciamentoUsuariosClient gerenciamentoUsuariosClient;
@@ -66,6 +70,8 @@ public class NovaCompraController {
 
         // Salva a venda (e os itens da venda) no banco de dados.
         vendaRepository.save(venda);
+
+        logger.info("{} cadastrada no banco de dados", venda.toString());
 
         // Se o pagamento foi aprovado, um evento é inserido no tópico Venda.
         if(venda.pagamentoAprovado()) {

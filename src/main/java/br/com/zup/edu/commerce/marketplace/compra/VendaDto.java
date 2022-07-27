@@ -26,6 +26,13 @@ public class VendaDto {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public String toString() {
+        return "Venda {" +
+                "codigoPedido=" + codigoPedido +
+                '}';
+    }
+
     public UUID getCodigoPedido() {
         return codigoPedido;
     }

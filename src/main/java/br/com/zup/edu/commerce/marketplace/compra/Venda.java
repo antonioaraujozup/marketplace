@@ -60,6 +60,14 @@ public class Venda {
         item.setVenda(this);
     }
 
+    @Override
+    public String toString() {
+        return "Venda {" +
+                "codigoPedido=" + codigoPedido +
+                ", pagamento=" + pagamento.getStatus() +
+                '}';
+    }
+
     public void adicionaDadosPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
     }
