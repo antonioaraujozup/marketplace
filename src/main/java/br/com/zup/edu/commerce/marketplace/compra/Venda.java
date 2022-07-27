@@ -51,6 +51,10 @@ public class Venda {
         return valorTotal;
     }
 
+    public StatusPagamento retornaStatusPagamento() {
+        return this.pagamento.getStatus();
+    }
+
     public void adicionaItemVenda(ItemVenda item) {
         this.itens.add(item);
         item.setVenda(this);

@@ -68,7 +68,7 @@ public class NovaCompraController {
         vendaRepository.save(venda);
 
         // Se o pagamento foi aprovado, um evento é inserido no tópico Venda.
-        if(venda.retornaStatusPagamento() == StatusPagamento.APROVADO) {
+        if(venda.pagamentoAprovado()) {
             kafkaProducerService.insereEventoNoTopico(new VendaDto(venda,usuarioResponse));
         }
 
@@ -78,7 +78,9 @@ public class NovaCompraController {
                 .toUri();
 
         // Retorna HTTP STATUS 201 CREATED.
-        return ResponseEntity.created(location).build();
+        return ResponseEntity
+                .created(location)
+                .body(new StatusPagamentoResponse(venda.retornaStatusPagamento()));
 
     }
 
