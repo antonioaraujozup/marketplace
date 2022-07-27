@@ -51,10 +51,6 @@ public class Venda {
         return valorTotal;
     }
 
-    public StatusPagamento retornaStatusPagamento() {
-        return this.pagamento.getStatus();
-    }
-
     public void adicionaItemVenda(ItemVenda item) {
         this.itens.add(item);
         item.setVenda(this);
@@ -62,6 +58,10 @@ public class Venda {
 
     public void adicionaDadosPagamento(Pagamento pagamento) {
         this.pagamento = pagamento;
+    }
+
+    public boolean pagamentoAprovado() {
+        return this.pagamento.getStatus() == StatusPagamento.APROVADO;
     }
 
     public UUID getCodigoPedido() {
