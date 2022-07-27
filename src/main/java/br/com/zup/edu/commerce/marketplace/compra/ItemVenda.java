@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 public class ItemVenda {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
