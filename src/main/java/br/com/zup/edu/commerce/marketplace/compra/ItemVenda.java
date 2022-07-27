@@ -7,11 +7,11 @@ import java.math.BigDecimal;
 public class ItemVenda {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
+    private Long idProduto;
 
     @Column(nullable = false)
     private Integer quantidade;
@@ -23,6 +23,9 @@ public class ItemVenda {
     @JoinColumn(name = "codigo_pedido")
     private Venda venda;
 
+    @Transient
+    private String nome;
+
     /**
      * @deprecated Construtor para uso exclusivo do Hibernate.
      */
@@ -30,18 +33,19 @@ public class ItemVenda {
     public ItemVenda() {
     }
 
-    public ItemVenda(String nome, Integer quantidade, BigDecimal valor) {
-        this.nome = nome;
+    public ItemVenda(Long idProduto, Integer quantidade, BigDecimal valor, String nome) {
+        this.idProduto = idProduto;
         this.quantidade = quantidade;
         this.valor = valor;
+        this.nome = nome;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
+    public Long getIdProduto() {
+        return idProduto;
     }
 
     public Integer getQuantidade() {
@@ -50,6 +54,10 @@ public class ItemVenda {
 
     public BigDecimal getValor() {
         return valor;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void setVenda(Venda venda) {

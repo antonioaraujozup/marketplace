@@ -1,7 +1,5 @@
 package br.com.zup.edu.commerce.marketplace.clients;
 
-import br.com.zup.edu.commerce.marketplace.compra.Usuario;
-
 import java.time.LocalDate;
 
 public class UsuarioResponse {
@@ -32,10 +30,6 @@ public class UsuarioResponse {
                 ", endereco='" + endereco + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 '}';
-    }
-
-    public Usuario toUsuario() {
-        return new Usuario(nome,cpf,endereco,email,dataNascimento);
     }
 
     public String getNome() {

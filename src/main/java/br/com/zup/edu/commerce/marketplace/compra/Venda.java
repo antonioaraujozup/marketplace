@@ -18,8 +18,8 @@ public class Venda {
     @GeneratedValue
     private UUID codigoPedido;
 
-    @Embedded
-    private Usuario comprador;
+    @Column(nullable = false)
+    private Long idUsuario;
 
     @Embedded
     private Pagamento pagamento;
@@ -37,8 +37,8 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(Usuario comprador) {
-        this.comprador = comprador;
+    public Venda(Long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public BigDecimal calculaValorTotal() {
@@ -68,8 +68,8 @@ public class Venda {
         return codigoPedido;
     }
 
-    public Usuario getComprador() {
-        return comprador;
+    public Long getIdUsuario() {
+        return idUsuario;
     }
 
     public Pagamento getPagamento() {

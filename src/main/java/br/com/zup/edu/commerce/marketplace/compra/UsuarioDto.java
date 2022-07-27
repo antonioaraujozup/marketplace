@@ -1,5 +1,6 @@
 package br.com.zup.edu.commerce.marketplace.compra;
 
+import br.com.zup.edu.commerce.marketplace.clients.UsuarioResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
@@ -17,7 +18,7 @@ public class UsuarioDto {
     public UsuarioDto() {
     }
 
-    public UsuarioDto(Usuario usuario) {
+    public UsuarioDto(UsuarioResponse usuario) {
         this.nome = usuario.getNome();
         this.cpf = usuario.getCpf();
         this.endereco = usuario.getEndereco();

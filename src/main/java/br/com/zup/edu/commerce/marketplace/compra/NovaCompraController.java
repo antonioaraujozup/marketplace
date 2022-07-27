@@ -44,7 +44,7 @@ public class NovaCompraController {
                         "O usuário de id = %s não foi encontrado".formatted(request.getUsuario())));
 
         // Cria o objeto venda.
-        Venda venda = new Venda(usuarioResponse.toUsuario());
+        Venda venda = new Venda(request.getUsuario());
 
         // Acessa o microsserviço de Catálogo de Produtos para buscar os dados do(s) produto(s).
         // Preenche o objeto venda com os produtos (itens).
@@ -69,7 +69,7 @@ public class NovaCompraController {
 
         // Se o pagamento foi aprovado, um evento é inserido no tópico Venda.
         if(venda.retornaStatusPagamento() == StatusPagamento.APROVADO) {
-            kafkaProducerService.insereEventoNoTopico(new VendaDto(venda));
+            kafkaProducerService.insereEventoNoTopico(new VendaDto(venda,usuarioResponse));
         }
 
         // Gera a URI de location.

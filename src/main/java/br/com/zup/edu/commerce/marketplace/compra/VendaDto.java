@@ -1,5 +1,7 @@
 package br.com.zup.edu.commerce.marketplace.compra;
 
+import br.com.zup.edu.commerce.marketplace.clients.UsuarioResponse;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -15,9 +17,9 @@ public class VendaDto {
     public VendaDto() {
     }
 
-    public VendaDto(Venda venda) {
+    public VendaDto(Venda venda, UsuarioResponse usuarioResponse) {
         this.codigoPedido = venda.getCodigoPedido();
-        this.comprador = new UsuarioDto(venda.getComprador());
+        this.comprador = new UsuarioDto(usuarioResponse);
         this.pagamento = new PagamentoDto(venda.getPagamento());
         this.itens = venda.getItens().stream()
                 .map(ItemVendaDto::new)

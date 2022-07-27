@@ -1,7 +1,6 @@
 package br.com.zup.edu.commerce.marketplace.clients;
 
 import br.com.zup.edu.commerce.marketplace.compra.ItemVenda;
-import br.com.zup.edu.commerce.marketplace.compra.ProdutoCompraRequest;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -50,7 +49,7 @@ public class ProdutoResponse {
     }
 
     public ItemVenda toItemVenda(Integer quantidade) {
-        return new ItemVenda(nome, quantidade, preco);
+        return new ItemVenda(id, quantidade, preco, nome);
     }
 
 }
